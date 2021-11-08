@@ -1,0 +1,4 @@
+name: neumont-college-teaching-sample
+channels:
+  - defaults
+prefix: /home/vla/anaconda3/envs/neumont-college-teaching-sample
