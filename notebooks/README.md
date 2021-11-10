@@ -1,0 +1,1 @@
+jupyter nbconvert linear_regression.ipynb --to slides --post serve
