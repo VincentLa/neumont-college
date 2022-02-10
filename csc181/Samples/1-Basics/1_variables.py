@@ -51,6 +51,16 @@ print(a, end=' [[Print this at the end]]')
 print()
 print(a, end='\n')
 
+# Basic Operations
+# You can perform many basic operations that you are familiar with
+f = 3 + 5
+f = 5 - 3
+f = 5 % 3
+f = 6 / 3
+f = 8 // 3
+f = "hello" + "good bye"
+
+
 # Comments
 # --------------------------
 # Use the hashtag to create a single comment e.g. #
