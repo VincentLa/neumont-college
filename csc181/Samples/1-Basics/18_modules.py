@@ -19,6 +19,12 @@ print(person_john['name'])
 
 # Import everything from the zz_sub_module so you don't have 
 # to reference the module name or alias
+
+# Note, while this is technically legal python code
+# it is not advisable to do this according to PEP 8
+# https://www.python.org/dev/peps/pep-0008/#imports
+# The reason why is that this makes readability much more
+# difficult because you don't know where the function is coming from.
 from zz_sub_module import *
 greeting('Dave')
 
