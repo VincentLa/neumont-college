@@ -2,7 +2,7 @@
 
 # declare a function in this module
 def greeting(name):
-    print(f"Hello, {name}")
+    print("Hello, {}".format(name))
 
 # create an object
 person_john = {
