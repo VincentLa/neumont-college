@@ -26,7 +26,11 @@ print(m1.prop)
 # or other operations that are necessary to do when the object is being created
 
 class Person:
+    # This is called a class attribute, and is accessible by any instance
+    species = "Homo Sapiens"
+
     def __init__(self, name, age):
+        # These are called "Instance Attributes" since they are attributes of the Instance
         self.name = name
         self.age = age
 
