@@ -1,4 +1,7 @@
+import os
 from tkinter import Tk, Label, Frame, Button, Entry, Canvas, PhotoImage
+
+file_path = os.path.dirname(os.path.realpath(__file__))
 
 root = Tk()
 root.title('Tkinter Demo')
@@ -17,9 +20,11 @@ def countDown():
 def doEntry():
     label_title.config(text="Hello " + entry_name.get() + "!")
 
+# https://www.tutorialspoint.com/python/tk_label.htm
+# fg = "Color of text"
 label_title = Label(
     text="Tkinter Demo",
-    fg="#007",
+    fg="#007", # This is a hex color, see https://www.color-hex.com/color-palette/5915
     font="Arial 20 bold italic"
 )
 label_title.grid(column=1, row=0)
@@ -81,7 +86,7 @@ canvas = Canvas(root,
 )
 canvas.grid(column=1, row=1)
 
-img_wasp = PhotoImage(file='./2-GUI/wasp.gif')
+img_wasp = PhotoImage(file=os.path.join(file_path, 'wasp.gif'))
 wasp_y = 0
 
 def animloop():
@@ -111,4 +116,7 @@ def animloop():
 
 
 animloop()
+
+# Start the main loop to show the form
+# ---------------------------
 root.mainloop()
