@@ -17,7 +17,7 @@ if not os.path.isdir(source_path):
 
 # Create source path if not exists
 if not os.path.isdir(dest_path):
-    os.mkdir(dest_path)
+    os.makedirs(dest_path)
 
 # Read all the files in the source folder
 files = os.listdir(path=source_path)
@@ -33,7 +33,7 @@ if len(files) > 0:
 
     image = image.rotate(270)        
 
-    image.save(dest_path + file)
+    image.save(os.path.join(dest_path, file))
 
     # Students need to research and discover how to manipulate the image
 
