@@ -74,7 +74,7 @@ canvas_foot.configure(background='green')
 canvas_left.configure(background='blue')
 canvas_right.configure(background='yellow')
 
-#=================================
+# #=================================
 
 # Font Styles
 font_title = tkFont.Font(family='Arial 16 bold', size=20)
