@@ -40,6 +40,8 @@ label_title2.grid(column=1, row=0)
 label_title3 = tkinter.Label(root,
     text='Place this label')
 label_title3.place(anchor='center', relx=.5, rely=.1)
+label_title3.config(text='Hello')
+label_title3.config(text='bye')
 
 # Entry
 # ---------------------------
