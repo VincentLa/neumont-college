@@ -24,10 +24,13 @@ the_trs = the_body.find_all('tr')
 game_list = []
 for tr in the_trs:
     # <td> tag defines standard data cell in an HTML table
-    the_tds = tr.find_all('td') 
+    the_tds = tr.find_all('td')
 
     td_list = []
     for td in the_tds:
+        # ipdb is an interactive debugger. Can comment out if you want the whole file to run
+        # import ipdb; ipdb.set_trace()
+
         # <sup> tag defines superscript text
         # https://www.w3schools.com/tags/tag_sup.asp
         if td.find('sup'):
@@ -41,7 +44,7 @@ for tr in the_trs:
             contents = td.find('span').contents[0]
         else:
             contents = td.contents[0]
-            
+
         contents = str(contents)
         contents = contents.replace('\n', '')
 
@@ -58,4 +61,3 @@ for game in game_list:
             print(f"'{element}'", end=', ')
         else:
             print(f"'{element}'")
-
