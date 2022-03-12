@@ -1,84 +1,94 @@
-from tkinter import *
-
-import tkinter.font as tkfont
-import sys
 import random
+from tkinter import *
+from tkinter import messagebox
 
 root = Tk()
 
+tuple1=("the start of the Revolutionary War",1775)
+tuple2=("the United States Constitution signed",1783)
+tuple3=("was President Lincoln assassinated",1865)
+tuple4=("it that Theodore Roosevelt's first day in office as President of the United States",1901)
+tuple5=("the beginning of World War II",1939)
+tuple6=("the first personal computer introduced",1975)
+tuple7=("the Berlin Wall taken down",1989)
+tuple8=("First mobile phone call ever made",1973)
+tuple9=("the Moon landing",1969)
+tuple10=("the begining of Vietnam war",1955)
 
-root.geometry("600x400")
-canvas_header = Canvas(root, height= 50)
-canvas_header.pack(side= 'top', fill=X)
-canvas_footer = Canvas(root, height=50)
-canvas_footer.pack(side="bottom", fill=BOTH)
-font_title = tkfont.Font(family="Arial 16 bold", size=20)
-
-Label_title = Label(canvas_header, text = "A Year To Remember", font = font_title, fg='blue')
-Label_title.place(relx = 0.5, rely= .5, anchor=CENTER)
-
-
-
-points = []
-
-Year = [
-    ("What year did the Revoultionary war start?", 1775),
-    ("When was the United States Constitution signed?", 1783),
-    ("When was President Lincoln assassinated?", 1865),
-    ("What year was Theodore Roosevelt's first day in office as president?", (1901)),
-    ("When was the beginning of World War II?", (1939)),
-    ("In what year was the first personal computer introduced?", (1975)),
-    ("In what year was the Berlin Wall taken down?", (1989)),
-    ("When was the first submarine used?", 1776),
-    ("Which year did Texas become a state? ", 1845),
-    ("Which year the U.S. Stock Market faced the Black Monday? ", 1987)
-]
+questionlist = [tuple1,tuple2,tuple3,tuple4,tuple5,tuple6,tuple7,tuple8,tuple9,tuple10]
+random.shuffle(questionlist)
 
 
-question_count = 0 
-user_input = 100
-score = 0 
+global count 
+count = 0
 
-#list of tupils - pass in a single element but is also returning the answer
-random.shuffle(Year)
-that_Random = Year.copy()
-print(that_Random)
+global q
+global ques
+global answer
+q = questionlist[count]
+ques = q[0]
+answer = q[-1]
 
+def myClick():
 
+        
+    x = e.get() 
+    global tpoint
+    global count
+    count =+ 1
+   
+    if int(x) == q[-1]:
+        tpoint = 10 
+        output = "Spot On! You got " + str(tpoint) + " Points"
+        resLabel = Label(root, text=output)
+        resLabel.pack()
+        e.delete(0, 'end')
 
-    
-def button_press():
-    global question_count, user_input, Year, score
-    print("question:", Year[question_count][0])
-    difference = abs(Year[question_count][1] - user_input)
-    if Year[question_count][1] == user_input:
-        score += 10
-    elif difference > 5:
-        pass
-    elif difference > 10:
-        pass
-    else: 
-        score += 1
-    question_count += 1
-    #gotta fix this 
-    # if button == button_press:
-    #     return that_Random
-     
-    
-    
+    elif q[-1]+5 < int(x) or int(x) > q[-1]-5:
+        tpoint = 5 
+        output = "It's within 5 years! You got "  + str(tpoint) + " Points"
+        resLabel = Label(root, text=output)
+        resLabel.pack()
+        e.delete(0, 'end')
 
-entry = Entry(root)
-button = Button(root, text='Submit', command=button_press)
-label = Label(root, text="{}".format(that_Random[0]))
-Current_Score = Label(root, text=f"Score: {score}")
+    elif q[-1]+10 < int(x) or int(x) > q[-1]-10:
+        tpoint = 2
+        output = "It's within 10 years! You got " + str(tpoint) + " Points"
+        resLabel = Label(root, text=output)
+        resLabel.pack()
+        e.delete(0, 'end')
 
-label.pack()
-entry.pack()
-button.pack()
-Current_Score.pack()
+    elif q[-1]+20 < int(x) or int(x) > q[-1]-20:
+        tpoint = 1
+        output = "It's within 20 years! You got " + str(tpoint) + " Points"
+        resLabel = Label(root,text= output)
+        resLabel.pack()
+        e.delete(0, 'end')
+
+def popup():
+    q = questionlist[count]
+    output = "What year was " + q[0] + "?"
+    messagebox.showinfo("Quesiton", output)
+
+quesButton = Button(root, text ="check Quesiton", command=popup)
+quesButton.pack()
+
+e = Entry(root, width= 20, borderwidth=3)
+e.pack()
+   
+subButton = Button(root, text="Submit",command=myClick)
+subButton.pack()
+
+def checkS():
+    Label(root,text=str(tpoint))
+    Label.pack()
+
+checkscore = Button(root, text="Current Score",command=checkS)
+checkscore.pack()
 
 def close_window(event):
-    sys.exit()
+    Tk.exit()
 root.bind('<Escape>', close_window)
-
+    
 root.mainloop()
+
